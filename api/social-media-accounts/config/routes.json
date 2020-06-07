@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/social-media-accounts",
+      "handler": "social-media-accounts.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/social-media-accounts/count",
+      "handler": "social-media-accounts.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/social-media-accounts/:id",
+      "handler": "social-media-accounts.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/social-media-accounts",
+      "handler": "social-media-accounts.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/social-media-accounts/:id",
+      "handler": "social-media-accounts.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/social-media-accounts/:id",
+      "handler": "social-media-accounts.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

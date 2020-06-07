@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_media_accounts",
+  "info": {
+    "name": "social_media_accounts"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "service": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password"
+    },
+    "url": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    }
+  }
+}

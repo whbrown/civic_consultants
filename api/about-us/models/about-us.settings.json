@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_uses",
+  "info": {
+    "name": "about_us"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "company_name": {
+      "type": "string",
+      "required": true
+    },
+    "tagline": {
+      "type": "text",
+      "maxLength": 80,
+      "required": false
+    },
+    "detailed_description": {
+      "type": "richtext"
+    }
+  }
+}

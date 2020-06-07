@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "navigation_menus",
+  "info": {
+    "name": "navigation_menu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "about": {
+      "type": "string"
+    },
+    "projects": {
+      "type": "string"
+    },
+    "services": {
+      "type": "string"
+    },
+    "awards_and_press": {
+      "type": "string"
+    },
+    "contact_us": {
+      "type": "string"
+    }
+  }
+}
