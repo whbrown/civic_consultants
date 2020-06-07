@@ -1,0 +1,1166 @@
+type AboutUs {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  company_name: String!
+  tagline: String
+  detailed_description: String
+}
+
+input AboutUsInput {
+  company_name: String!
+  tagline: String
+  detailed_description: String
+}
+
+type Award {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  description: String
+  year: Date
+  link: String
+}
+
+type AwardAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type AwardConnection {
+  values: [Award]
+  groupBy: AwardGroupBy
+  aggregate: AwardAggregator
+}
+
+type AwardConnectionCreated_at {
+  key: DateTime
+  connection: AwardConnection
+}
+
+type AwardConnectionDescription {
+  key: String
+  connection: AwardConnection
+}
+
+type AwardConnectionId {
+  key: ID
+  connection: AwardConnection
+}
+
+type AwardConnectionLink {
+  key: String
+  connection: AwardConnection
+}
+
+type AwardConnectionTitle {
+  key: String
+  connection: AwardConnection
+}
+
+type AwardConnectionUpdated_at {
+  key: DateTime
+  connection: AwardConnection
+}
+
+type AwardConnectionYear {
+  key: ID
+  connection: AwardConnection
+}
+
+type AwardGroupBy {
+  id: [AwardConnectionId]
+  created_at: [AwardConnectionCreated_at]
+  updated_at: [AwardConnectionUpdated_at]
+  title: [AwardConnectionTitle]
+  description: [AwardConnectionDescription]
+  year: [AwardConnectionYear]
+  link: [AwardConnectionLink]
+}
+
+input AwardInput {
+  title: String
+  description: String
+  year: Date
+  link: String
+}
+
+type ContactInformation {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  address: String
+  phone: String
+  fax: String
+}
+
+input ContactInformationInput {
+  address: String
+  phone: String
+  fax: String
+}
+
+input createAwardInput {
+  data: AwardInput
+}
+
+type createAwardPayload {
+  award: Award
+}
+
+input createProjectInput {
+  data: ProjectInput
+}
+
+type createProjectPayload {
+  project: Project
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createServiceInput {
+  data: ServiceInput
+}
+
+type createServicePayload {
+  service: Service
+}
+
+input createSocialMediaAccountInput {
+  data: SocialMediaAccountInput
+}
+
+type createSocialMediaAccountPayload {
+  socialMediaAccount: SocialMediaAccounts
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+type deleteAboutUsPayload {
+  aboutUs: AboutUs
+}
+
+input deleteAwardInput {
+  where: InputID
+}
+
+type deleteAwardPayload {
+  award: Award
+}
+
+type deleteContactInformationPayload {
+  contactInformation: ContactInformation
+}
+
+type deleteNavigationMenuPayload {
+  navigationMenu: NavigationMenu
+}
+
+input deleteProjectInput {
+  where: InputID
+}
+
+type deleteProjectPayload {
+  project: Project
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteServiceInput {
+  where: InputID
+}
+
+type deleteServicePayload {
+  service: Service
+}
+
+input deleteSocialMediaAccountInput {
+  where: InputID
+}
+
+type deleteSocialMediaAccountPayload {
+  socialMediaAccount: SocialMediaAccounts
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editAboutUsInput {
+  company_name: String
+  tagline: String
+  detailed_description: String
+}
+
+input editAwardInput {
+  title: String
+  description: String
+  year: Date
+  link: String
+}
+
+input editContactInformationInput {
+  address: String
+  phone: String
+  fax: String
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input editNavigationMenuInput {
+  about: String
+  projects: String
+  services: String
+  awards_and_press: String
+  contact_us: String
+}
+
+input editProjectInput {
+  title: String
+  sq_footage: Int
+  contact_name: String
+  contact_company: String
+  contact_phonenumber: String
+  start_date: Date
+  end_date: Date
+  description: String
+  additional_images: [ID]
+  primary_image: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editServiceInput {
+  title: String
+  description: String
+  image: ID
+}
+
+input editSocialMediaAccountInput {
+  service: String
+  username: String
+  password: String
+  url: String
+  active: Boolean
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | AboutUs | updateAboutUsPayload | deleteAboutUsPayload | Award | AwardConnection | AwardAggregator | AwardGroupBy | AwardConnectionId | AwardConnectionCreated_at | AwardConnectionUpdated_at | AwardConnectionTitle | AwardConnectionDescription | AwardConnectionYear | AwardConnectionLink | createAwardPayload | updateAwardPayload | deleteAwardPayload | ContactInformation | updateContactInformationPayload | deleteContactInformationPayload | NavigationMenu | updateNavigationMenuPayload | deleteNavigationMenuPayload | Project | ProjectConnection | ProjectAggregator | ProjectAggregatorSum | ProjectAggregatorAvg | ProjectAggregatorMin | ProjectAggregatorMax | ProjectGroupBy | ProjectConnectionId | ProjectConnectionCreated_at | ProjectConnectionUpdated_at | ProjectConnectionTitle | ProjectConnectionSq_footage | ProjectConnectionContact_name | ProjectConnectionContact_company | ProjectConnectionContact_phonenumber | ProjectConnectionStart_date | ProjectConnectionEnd_date | ProjectConnectionDescription | ProjectConnectionPrimary_image | createProjectPayload | updateProjectPayload | deleteProjectPayload | Service | ServiceConnection | ServiceAggregator | ServiceGroupBy | ServiceConnectionId | ServiceConnectionCreated_at | ServiceConnectionUpdated_at | ServiceConnectionTitle | ServiceConnectionDescription | ServiceConnectionImage | createServicePayload | updateServicePayload | deleteServicePayload | SocialMediaAccounts | SocialMediaAccountsConnection | SocialMediaAccountsAggregator | SocialMediaAccountsGroupBy | SocialMediaAccountsConnectionId | SocialMediaAccountsConnectionCreated_at | SocialMediaAccountsConnectionUpdated_at | SocialMediaAccountsConnectionService | SocialMediaAccountsConnectionUsername | SocialMediaAccountsConnectionPassword | SocialMediaAccountsConnectionUrl | SocialMediaAccountsConnectionActive | createSocialMediaAccountPayload | updateSocialMediaAccountPayload | deleteSocialMediaAccountPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+
+type Mutation {
+  updateAboutUs(input: updateAboutUsInput): updateAboutUsPayload
+  deleteAboutUs: deleteAboutUsPayload
+  createAward(input: createAwardInput): createAwardPayload
+  updateAward(input: updateAwardInput): updateAwardPayload
+  deleteAward(input: deleteAwardInput): deleteAwardPayload
+  updateContactInformation(input: updateContactInformationInput): updateContactInformationPayload
+  deleteContactInformation: deleteContactInformationPayload
+  updateNavigationMenu(input: updateNavigationMenuInput): updateNavigationMenuPayload
+  deleteNavigationMenu: deleteNavigationMenuPayload
+  createProject(input: createProjectInput): createProjectPayload
+  updateProject(input: updateProjectInput): updateProjectPayload
+  deleteProject(input: deleteProjectInput): deleteProjectPayload
+  createService(input: createServiceInput): createServicePayload
+  updateService(input: updateServiceInput): updateServicePayload
+  deleteService(input: deleteServiceInput): deleteServicePayload
+  createSocialMediaAccount(input: createSocialMediaAccountInput): createSocialMediaAccountPayload
+  updateSocialMediaAccount(input: updateSocialMediaAccountInput): updateSocialMediaAccountPayload
+  deleteSocialMediaAccount(input: deleteSocialMediaAccountInput): deleteSocialMediaAccountPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+type NavigationMenu {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  about: String
+  projects: String
+  services: String
+  awards_and_press: String
+  contact_us: String
+}
+
+input NavigationMenuInput {
+  about: String
+  projects: String
+  services: String
+  awards_and_press: String
+  contact_us: String
+}
+
+type Project {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  sq_footage: Int
+  contact_name: String
+  contact_company: String
+  contact_phonenumber: String
+  start_date: Date
+  end_date: Date
+  description: String
+  primary_image: UploadFile
+  additional_images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type ProjectAggregator {
+  count: Int
+  totalCount: Int
+  sum: ProjectAggregatorSum
+  avg: ProjectAggregatorAvg
+  min: ProjectAggregatorMin
+  max: ProjectAggregatorMax
+}
+
+type ProjectAggregatorAvg {
+  sq_footage: Float
+}
+
+type ProjectAggregatorMax {
+  sq_footage: Float
+}
+
+type ProjectAggregatorMin {
+  sq_footage: Float
+}
+
+type ProjectAggregatorSum {
+  sq_footage: Float
+}
+
+type ProjectConnection {
+  values: [Project]
+  groupBy: ProjectGroupBy
+  aggregate: ProjectAggregator
+}
+
+type ProjectConnectionContact_company {
+  key: String
+  connection: ProjectConnection
+}
+
+type ProjectConnectionContact_name {
+  key: String
+  connection: ProjectConnection
+}
+
+type ProjectConnectionContact_phonenumber {
+  key: String
+  connection: ProjectConnection
+}
+
+type ProjectConnectionCreated_at {
+  key: DateTime
+  connection: ProjectConnection
+}
+
+type ProjectConnectionDescription {
+  key: String
+  connection: ProjectConnection
+}
+
+type ProjectConnectionEnd_date {
+  key: ID
+  connection: ProjectConnection
+}
+
+type ProjectConnectionId {
+  key: ID
+  connection: ProjectConnection
+}
+
+type ProjectConnectionPrimary_image {
+  key: ID
+  connection: ProjectConnection
+}
+
+type ProjectConnectionSq_footage {
+  key: Int
+  connection: ProjectConnection
+}
+
+type ProjectConnectionStart_date {
+  key: ID
+  connection: ProjectConnection
+}
+
+type ProjectConnectionTitle {
+  key: String
+  connection: ProjectConnection
+}
+
+type ProjectConnectionUpdated_at {
+  key: DateTime
+  connection: ProjectConnection
+}
+
+type ProjectGroupBy {
+  id: [ProjectConnectionId]
+  created_at: [ProjectConnectionCreated_at]
+  updated_at: [ProjectConnectionUpdated_at]
+  title: [ProjectConnectionTitle]
+  sq_footage: [ProjectConnectionSq_footage]
+  contact_name: [ProjectConnectionContact_name]
+  contact_company: [ProjectConnectionContact_company]
+  contact_phonenumber: [ProjectConnectionContact_phonenumber]
+  start_date: [ProjectConnectionStart_date]
+  end_date: [ProjectConnectionEnd_date]
+  description: [ProjectConnectionDescription]
+  primary_image: [ProjectConnectionPrimary_image]
+}
+
+input ProjectInput {
+  title: String!
+  sq_footage: Int
+  contact_name: String
+  contact_company: String
+  contact_phonenumber: String
+  start_date: Date
+  end_date: Date
+  description: String
+  additional_images: [ID]
+  primary_image: ID
+}
+
+type Query {
+  aboutUs: AboutUs
+  award(id: ID!): Award
+  awards(sort: String, limit: Int, start: Int, where: JSON): [Award]
+  awardsConnection(sort: String, limit: Int, start: Int, where: JSON): AwardConnection
+  contactInformation: ContactInformation
+  navigationMenu: NavigationMenu
+  project(id: ID!): Project
+  projects(sort: String, limit: Int, start: Int, where: JSON): [Project]
+  projectsConnection(sort: String, limit: Int, start: Int, where: JSON): ProjectConnection
+  service(id: ID!): Service
+  services(sort: String, limit: Int, start: Int, where: JSON): [Service]
+  servicesConnection(sort: String, limit: Int, start: Int, where: JSON): ServiceConnection
+  socialMediaAccount(id: ID!): SocialMediaAccounts
+  socialMediaAccounts(sort: String, limit: Int, start: Int, where: JSON): [SocialMediaAccounts]
+  socialMediaAccountsConnection(sort: String, limit: Int, start: Int, where: JSON): SocialMediaAccountsConnection
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+type Service {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  description: String
+  image: UploadFile
+}
+
+type ServiceAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ServiceConnection {
+  values: [Service]
+  groupBy: ServiceGroupBy
+  aggregate: ServiceAggregator
+}
+
+type ServiceConnectionCreated_at {
+  key: DateTime
+  connection: ServiceConnection
+}
+
+type ServiceConnectionDescription {
+  key: String
+  connection: ServiceConnection
+}
+
+type ServiceConnectionId {
+  key: ID
+  connection: ServiceConnection
+}
+
+type ServiceConnectionImage {
+  key: ID
+  connection: ServiceConnection
+}
+
+type ServiceConnectionTitle {
+  key: String
+  connection: ServiceConnection
+}
+
+type ServiceConnectionUpdated_at {
+  key: DateTime
+  connection: ServiceConnection
+}
+
+type ServiceGroupBy {
+  id: [ServiceConnectionId]
+  created_at: [ServiceConnectionCreated_at]
+  updated_at: [ServiceConnectionUpdated_at]
+  title: [ServiceConnectionTitle]
+  description: [ServiceConnectionDescription]
+  image: [ServiceConnectionImage]
+}
+
+input ServiceInput {
+  title: String!
+  description: String
+  image: ID
+}
+
+input SocialMediaAccountInput {
+  service: String
+  username: String
+  password: String
+  url: String
+  active: Boolean
+}
+
+type SocialMediaAccounts {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  service: String
+  username: String
+  password: String
+  url: String
+  active: Boolean
+}
+
+type SocialMediaAccountsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type SocialMediaAccountsConnection {
+  values: [SocialMediaAccounts]
+  groupBy: SocialMediaAccountsGroupBy
+  aggregate: SocialMediaAccountsAggregator
+}
+
+type SocialMediaAccountsConnectionActive {
+  key: Boolean
+  connection: SocialMediaAccountsConnection
+}
+
+type SocialMediaAccountsConnectionCreated_at {
+  key: DateTime
+  connection: SocialMediaAccountsConnection
+}
+
+type SocialMediaAccountsConnectionId {
+  key: ID
+  connection: SocialMediaAccountsConnection
+}
+
+type SocialMediaAccountsConnectionPassword {
+  key: String
+  connection: SocialMediaAccountsConnection
+}
+
+type SocialMediaAccountsConnectionService {
+  key: String
+  connection: SocialMediaAccountsConnection
+}
+
+type SocialMediaAccountsConnectionUpdated_at {
+  key: DateTime
+  connection: SocialMediaAccountsConnection
+}
+
+type SocialMediaAccountsConnectionUrl {
+  key: String
+  connection: SocialMediaAccountsConnection
+}
+
+type SocialMediaAccountsConnectionUsername {
+  key: String
+  connection: SocialMediaAccountsConnection
+}
+
+type SocialMediaAccountsGroupBy {
+  id: [SocialMediaAccountsConnectionId]
+  created_at: [SocialMediaAccountsConnectionCreated_at]
+  updated_at: [SocialMediaAccountsConnectionUpdated_at]
+  service: [SocialMediaAccountsConnectionService]
+  username: [SocialMediaAccountsConnectionUsername]
+  password: [SocialMediaAccountsConnectionPassword]
+  url: [SocialMediaAccountsConnectionUrl]
+  active: [SocialMediaAccountsConnectionActive]
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateAboutUsInput {
+  data: editAboutUsInput
+}
+
+type updateAboutUsPayload {
+  aboutUs: AboutUs
+}
+
+input updateAwardInput {
+  where: InputID
+  data: editAwardInput
+}
+
+type updateAwardPayload {
+  award: Award
+}
+
+input updateContactInformationInput {
+  data: editContactInformationInput
+}
+
+type updateContactInformationPayload {
+  contactInformation: ContactInformation
+}
+
+input updateNavigationMenuInput {
+  data: editNavigationMenuInput
+}
+
+type updateNavigationMenuPayload {
+  navigationMenu: NavigationMenu
+}
+
+input updateProjectInput {
+  where: InputID
+  data: editProjectInput
+}
+
+type updateProjectPayload {
+  project: Project
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateServiceInput {
+  where: InputID
+  data: editServiceInput
+}
+
+type updateServicePayload {
+  service: Service
+}
+
+input updateSocialMediaAccountInput {
+  where: InputID
+  data: editSocialMediaAccountInput
+}
+
+type updateSocialMediaAccountPayload {
+  socialMediaAccount: SocialMediaAccounts
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String!
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+}
