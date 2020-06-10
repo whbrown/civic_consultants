@@ -1,0 +1,210 @@
+.header {
+  transition:all .3s cubic-bezier(.455,.03,.515,.955);
+  position:fixed;
+  top:.75rem;
+  right:.75rem;
+  left:.75rem;
+  z-index:4;
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-align:center;
+  align-items:center;
+  font-size:.75rem;
+  background:#22242E url('../images/bg_texture.png');
+ }
+ .header:before {
+  content:"";
+  position:absolute;
+  top:-.75rem;
+  left:0;
+  width:100%;
+  height:.75rem;
+  background-color:#f2e0c2
+ }
+ @media (min-width:45em) {
+  .header {
+   position:fixed;
+   top:1.5rem;
+   right:1.5rem;
+   left:1.5rem;
+   background:none
+  }
+  .header:before {
+   display:none
+  }
+ }
+ .header.is-inactive {
+  top:0;
+  transform:translate3d(0,-100%,0)
+ }
+ .header.is-active {
+  top:0;
+  /* background:#c3332b url(../../images/texture@2x.png); */
+  box-shadow:0 1px 0 0 rgba(34,36,46,.5)
+ }
+ .header__logo {
+  display:block;
+  padding:0 1.5em;
+  height:6em;
+  line-height:6em;
+  background-color:#22242e;
+  transform-origin:top left;
+  transition:transform .3s cubic-bezier(.455,.03,.515,.955)
+ }
+ @media (min-width:45em) {
+  .header__logo {
+   transform:scale(1.3)
+  }
+ }
+ .is-active .header__logo,
+ .is-inactive .header__logo {
+  transform:none
+ }
+ .header__logo img {
+  fill:#c4c4c4
+ }
+ .header__nav-toggle {
+  margin:0 auto;
+  padding: 2em 8em 2em 2em;
+  font-size:.75rem;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  color:#f2e0c2;
+ }
+ .fonts-loaded .header__nav-toggle {
+  font-family:Futura Bold,helvetica,sans-serif;
+  font-weight:400;
+  font-style:normal
+ }
+
+ @media (min-width:32em) {
+  .header__nav-toggle {
+   display:none
+  }
+ }
+ .header__nav-toggle:focus,
+ .header__nav-toggle:hover {
+  color:#f2e0c2;
+ }
+ .header__nav {
+  transition:opacity .3s cubic-bezier(.455,.03,.515,.955);
+  visibility:hidden;
+  opacity:0;
+  padding:4.5em 1.5em
+ }
+ @media (min-width:32em) {
+  .header__nav {
+   position:static;
+   visibility:visible;
+   opacity:1
+  }
+ }
+ .js .header__nav {
+  position:fixed;
+  top:6em;
+  right:.75rem;
+  bottom:0;
+  left:.75rem;
+  z-index:3;
+  -ms-flex-pack:center;
+  justify-content:center;
+  -ms-flex-align:center;
+  align-items:center;
+  background-color:#22242e;
+  background-image:url('../images/blueprint_25_light.svg'),url('../images/bg_texture.png');
+  background-size:cover;
+  margin-top:.75rem
+ }
+ @media (min-width:32em) {
+  .js .header__nav {
+   position:static;
+   background-color:transparent;
+   background-image:none;
+   margin:0
+  }
+ }
+ .header__nav.is-active {
+  visibility:visible;
+  opacity:1;
+  border-bottom:.75rem solid #f2e0c2
+ }
+ .is-active.is-active .header__nav {
+  margin-top:0
+ }
+ @media (min-width:32em) {
+  .header__nav a {
+   font-size:calc(0.1rem + 1vw);
+   height:6em;
+   line-height:6em;
+  }
+ }
+ .header__nav a.is-active {
+  border-bottom:5px solid #22242e;
+ }
+ .header__search-toggle {
+  display:block;
+  padding:0 1.8em;
+  height:6em;
+  line-height:6em;
+ }
+ .no-js .header__search-toggle {
+  display:none;
+ }
+ .header__search-toggle svg {
+  fill:#22242e;
+ }
+ .header__search-toggle.is-active svg {
+  fill:#f2e0c2;
+ }
+
+ .toggle {
+  position:relative;
+ }
+ .toggle__control {
+  top:50%;
+  margin: 0 1em;
+ }
+ .toggle__control,
+ .toggle__control:after,
+ .toggle__control:before {
+  position:absolute;
+  z-index:4;
+  width:1.5rem;
+  height:.2rem;
+  background-color: #f2e0c2;
+  border-radius:.2em;
+  transition:all .15s cubic-bezier(.455,.03,.515,.955);
+ }
+ .toggle__control:after,
+ .toggle__control:before {
+  content:"";
+ }
+ .toggle__control:before {
+  top:6px;
+ }
+ .toggle__control:after {
+  top:-6px;
+ }
+ .toggle.is-active .toggle__control {
+  background:transparent;
+ }
+ .toggle.is-active .toggle__control:before {
+  top:0;
+  transform:rotate(-45deg);
+ }
+ .toggle.is-active .toggle__control:after {
+  top:0;
+  transform:rotate(45deg);
+ }
+ .toggle--knockout .toggle__control,
+ .toggle--knockout .toggle__control:after,
+ .toggle--knockout .toggle__control:before {
+  background-color:#c4c4c4;
+ }
+ .toggle__label {
+  position:relative;
+  top:.2em;
+  font-family:Futura Bold,helvetica,sans-serif;
+  font-weight:400;
+  font-style:normal;
+ }

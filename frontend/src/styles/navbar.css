@@ -1,0 +1,49 @@
+.nav {
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex:1;
+  flex:1;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  text-align:center
+ }
+ .fonts-loaded .nav {
+  font-family:Futura Bold,helvetica,sans-serif;
+  font-weight:400;
+  font-style:normal
+ }
+ @media (min-width:32em) {
+  .nav {
+   -ms-flex-direction:row;
+   flex-direction:row;
+   -ms-flex-pack:center;
+   justify-content:center;
+   -ms-flex-item-align:stretch;
+   -ms-grid-row-align:stretch;
+   align-self:stretch;
+   padding:0
+  }
+ }
+ .nav a {
+  display:inline-block;
+  padding:1.5em;
+  margin:0;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  color:hsla(38,65%,85%,.8)
+ }
+ .nav a:active,
+ .nav a:focus,
+ .nav a:hover {
+  color:#f2e0c2
+ }
+ @media (min-width:32em) {
+  .nav a {
+   padding:0 .75em
+  }
+ }
+ @media (min-width:64em) {
+  .nav a {
+   padding:0 1.5em
+  }
+ }

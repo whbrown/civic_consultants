@@ -1,0 +1,180 @@
+.intro {
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-align:center;
+  align-items:center;
+  -ms-flex-pack:center;
+  justify-content:center;
+  padding:4.5em 1.5em;
+  /* background:#c3332b url(../../images/texture@2x.png) repeat; */
+  background: #77a4b6 url('../images/blueprint_25.svg');
+  transition:transform .3s cubic-bezier(.455,.03,.515,.955)
+ }
+ @media only screen and (-webkit-min-device-pixel-ratio:1) and (device-width:768px) and (device-height:1024px) and (orientation:portrait) {
+  .intro {
+   height:1024px
+  }
+ }
+ @media only screen and (-webkit-min-device-pixel-ratio:1) and (device-width:768px) and (device-height:1024px) and (orientation:landscape) {
+  .intro {
+   height:768px
+  }
+ }
+ @media only screen and (-webkit-min-device-pixel-ratio:1) and (device-width:320px) and (device-height:480px) and (orientation:portrait) {
+  .intro {
+   height:480px
+  }
+ }
+ @media only screen and (-webkit-min-device-pixel-ratio:1) and (device-width:320px) and (device-height:480px) and (orientation:landscape) {
+  .intro {
+   height:320px
+  }
+ }
+ @media only screen and (-webkit-min-device-pixel-ratio:1) and (device-width:320px) and (device-height:568px) and (orientation:portrait) {
+  .intro {
+   height:568px
+  }
+ }
+ @media only screen and (-webkit-min-device-pixel-ratio:1) and (device-width:320px) and (device-height:568px) and (orientation:landscape) {
+  .intro {
+   height:320px
+  }
+ }
+ @media (min-width:45em) {
+  .intro {
+   padding:6em 1.5em;
+   /* background-image:url(../../images/texture@2x.png); */
+   background-size:auto;
+   background-attachment:fixed
+  }
+ }
+ @media (min-width:64em) {
+  .intro {
+   padding:7.5em 1.5em;
+   /* background-image:url(../../images/topo-dark.png),url(../../images/texture@2x.png); */
+   background-repeat:no-repeat,repeat;
+   background-size:cover,auto
+  }
+ }
+ .intro[data-type=javascript] {
+  background-color:#d8b95d
+ }
+ .intro[data-type=css] {
+  background-color:#b1d1bd
+ }
+ .intro[data-type=html] {
+  background-color:#f9956d
+ }
+ .intro__content,
+ .intro__count,
+ .intro__icons,
+ .intro__img {
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  will-change:transform;
+  transform:translateZ(0)
+ }
+ .intro__content {
+  position:relative;
+  z-index:1;
+  width:90%
+ }
+ @media (min-width:32em) {
+  .intro__content {
+   width:80%
+  }
+ }
+ @media (min-width:45em) {
+  .intro__content {
+   width:70%
+  }
+ }
+ @media (min-width:64em) {
+  .intro__content {
+   width:60%
+  }
+ }
+ .intro__content:after {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  bottom:-20%;
+  right:-10%;
+  width:100%;
+  height:100%;
+  /* background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 9 9" fill="#22242E"><circle cx="2" cy="2" r="2" style="opacity:0.5" /></svg>') repeat */
+ }
+/* .intro__content .logo {
+  width: 100px;
+} */
+.intro__logo {
+  min-width: 100px;
+}
+
+ .intro__count,
+ .intro__icons {
+  z-index:0
+ }
+ .intro__count,
+ .intro__icons,
+ .is-active .intro__count,
+ .is-active .intro__icons {
+  animation:b .9s cubic-bezier(.455,.03,.515,.955)
+ }
+ .intro__count {
+  position:absolute;
+  right:5vh;
+  bottom:5vh;
+  width:auto;
+  height:18vh;
+  font-family:Futura Bold,helvetica,sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:calc(1rem + 12vw);
+  line-height:1;
+  color:rgba(34,36,46,.075);
+  text-align:right;
+  mix-blend-mode:multiply;
+  overflow:hidden
+ }
+ .intro__icons {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0
+ }
+ .intro__icons svg {
+  position:absolute;
+  opacity:.2;
+  mix-blend-mode:multiply;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden
+ }
+ .intro__icons svg:first-child {
+  top:20%;
+  left:15%
+ }
+ .intro__icons svg:nth-child(2) {
+  top:50%;
+  left:75%
+ }
+ .intro__icons svg:nth-child(3) {
+  top:70%;
+  left:20%
+ }
+ .intro__icons svg:nth-child(4) {
+  top:30%;
+  left:50%
+ }
+ .intro__arrow {
+  opacity:.15;
+  position:absolute;
+  bottom:15%;
+  left:50%;
+  transform:translateX(-50%);
+  mix-blend-mode:multiply
+ }
