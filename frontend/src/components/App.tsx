@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Header from '@/components/Header';
 import Intro from '@/components/Intro';
+import Projects from '@/components/Projects';
 
 /* declarations */
 
@@ -11,6 +12,7 @@ interface AppProps {};
 
 interface AppState {
   menuItems: null | { id: number, displayName: string, path: string }[]
+  projects: null | CivicProject[];
   aboutUs: null | CivicAboutUs;
   isMobileNavActive: boolean;
 }
@@ -24,7 +26,8 @@ class App extends Component<AppProps, AppState> {
     this.state = {
       menuItems: null,
       aboutUs: null,
-      isMobileNavActive: false
+      isMobileNavActive: false,
+      projects: null,
     }
   }
 
@@ -44,7 +47,7 @@ class App extends Component<AppProps, AppState> {
   }
 
   getMenuItems = async () => {
-    const navQueryResponse = await axios.get<CivicNavMenuItem[]>(`${process.env.API_URL}/navigation-menu-items`); // refactor to definitions file
+    const navQueryResponse = await axios.get<CivicNavMenuItem[]>(`${process.env.API_URL}/navigation-menu-items`);
     const navMenuItems = navQueryResponse.data.map((menuItem) => {
       return { id: menuItem.id, displayName: menuItem.display_name, path: menuItem.path }
     });
@@ -53,13 +56,21 @@ class App extends Component<AppProps, AppState> {
     });
   }
 
+  getProjects = async () => {
+    const projectsQueryResponse = await axios.get<CivicProject[]>(`${process.env.API_URL}/projects`);
+    this.setState({
+      projects: projectsQueryResponse.data
+    });
+  }
+
   render() {
-    const { menuItems, aboutUs } = this.state;
+    const { menuItems, aboutUs, projects } = this.state;
     return (
       <div className="home js">
         <Header menuItems={menuItems} getMenuItems={this.getMenuItems} isMobileNavActive={this.state.isMobileNavActive} toggleMobileNav={this.toggleMobileNav} />
         <main className="main__inner">
           <Intro aboutUs={aboutUs} />
+          <Projects projects={projects} getProjects={this.getProjects} />
         </main>
       </div>
     )
