@@ -5,12 +5,14 @@ type AboutUs {
   company_name: String!
   tagline: String
   detailed_description: String
+  logo: UploadFile
 }
 
 input AboutUsInput {
   company_name: String!
   tagline: String
   detailed_description: String
+  logo: ID
 }
 
 type Award {
@@ -109,6 +111,14 @@ type createAwardPayload {
   award: Award
 }
 
+input createNavigationMenuItemInput {
+  data: NavigationMenuItemInput
+}
+
+type createNavigationMenuItemPayload {
+  navigationMenuItem: NavigationMenuItem
+}
+
 input createProjectInput {
   data: ProjectInput
 }
@@ -179,8 +189,12 @@ type deleteContactInformationPayload {
   contactInformation: ContactInformation
 }
 
-type deleteNavigationMenuPayload {
-  navigationMenu: NavigationMenu
+input deleteNavigationMenuItemInput {
+  where: InputID
+}
+
+type deleteNavigationMenuItemPayload {
+  navigationMenuItem: NavigationMenuItem
 }
 
 input deleteProjectInput {
@@ -227,6 +241,7 @@ input editAboutUsInput {
   company_name: String
   tagline: String
   detailed_description: String
+  logo: ID
 }
 
 input editAwardInput {
@@ -260,12 +275,9 @@ input editFileInput {
   related: [ID]
 }
 
-input editNavigationMenuInput {
-  about: String
-  projects: String
-  services: String
-  awards_and_press: String
-  contact_us: String
+input editNavigationMenuItemInput {
+  display_name: String
+  path: String
 }
 
 input editProjectInput {
@@ -344,7 +356,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | AboutUs | updateAboutUsPayload | deleteAboutUsPayload | Award | AwardConnection | AwardAggregator | AwardGroupBy | AwardConnectionId | AwardConnectionCreated_at | AwardConnectionUpdated_at | AwardConnectionTitle | AwardConnectionDescription | AwardConnectionYear | AwardConnectionLink | createAwardPayload | updateAwardPayload | deleteAwardPayload | ContactInformation | updateContactInformationPayload | deleteContactInformationPayload | NavigationMenu | updateNavigationMenuPayload | deleteNavigationMenuPayload | Project | ProjectConnection | ProjectAggregator | ProjectAggregatorSum | ProjectAggregatorAvg | ProjectAggregatorMin | ProjectAggregatorMax | ProjectGroupBy | ProjectConnectionId | ProjectConnectionCreated_at | ProjectConnectionUpdated_at | ProjectConnectionTitle | ProjectConnectionSq_footage | ProjectConnectionContact_name | ProjectConnectionContact_company | ProjectConnectionContact_phonenumber | ProjectConnectionStart_date | ProjectConnectionEnd_date | ProjectConnectionDescription | ProjectConnectionPrimary_image | createProjectPayload | updateProjectPayload | deleteProjectPayload | Service | ServiceConnection | ServiceAggregator | ServiceGroupBy | ServiceConnectionId | ServiceConnectionCreated_at | ServiceConnectionUpdated_at | ServiceConnectionTitle | ServiceConnectionDescription | ServiceConnectionImage | createServicePayload | updateServicePayload | deleteServicePayload | SocialMediaAccounts | SocialMediaAccountsConnection | SocialMediaAccountsAggregator | SocialMediaAccountsGroupBy | SocialMediaAccountsConnectionId | SocialMediaAccountsConnectionCreated_at | SocialMediaAccountsConnectionUpdated_at | SocialMediaAccountsConnectionService | SocialMediaAccountsConnectionUsername | SocialMediaAccountsConnectionPassword | SocialMediaAccountsConnectionUrl | SocialMediaAccountsConnectionActive | createSocialMediaAccountPayload | updateSocialMediaAccountPayload | deleteSocialMediaAccountPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | AboutUs | updateAboutUsPayload | deleteAboutUsPayload | Award | AwardConnection | AwardAggregator | AwardGroupBy | AwardConnectionId | AwardConnectionCreated_at | AwardConnectionUpdated_at | AwardConnectionTitle | AwardConnectionDescription | AwardConnectionYear | AwardConnectionLink | createAwardPayload | updateAwardPayload | deleteAwardPayload | ContactInformation | updateContactInformationPayload | deleteContactInformationPayload | NavigationMenuItem | NavigationMenuItemConnection | NavigationMenuItemAggregator | NavigationMenuItemGroupBy | NavigationMenuItemConnectionId | NavigationMenuItemConnectionCreated_at | NavigationMenuItemConnectionUpdated_at | NavigationMenuItemConnectionDisplay_name | NavigationMenuItemConnectionPath | createNavigationMenuItemPayload | updateNavigationMenuItemPayload | deleteNavigationMenuItemPayload | Project | ProjectConnection | ProjectAggregator | ProjectAggregatorSum | ProjectAggregatorAvg | ProjectAggregatorMin | ProjectAggregatorMax | ProjectGroupBy | ProjectConnectionId | ProjectConnectionCreated_at | ProjectConnectionUpdated_at | ProjectConnectionTitle | ProjectConnectionSq_footage | ProjectConnectionContact_name | ProjectConnectionContact_company | ProjectConnectionContact_phonenumber | ProjectConnectionStart_date | ProjectConnectionEnd_date | ProjectConnectionDescription | ProjectConnectionPrimary_image | createProjectPayload | updateProjectPayload | deleteProjectPayload | Service | ServiceConnection | ServiceAggregator | ServiceGroupBy | ServiceConnectionId | ServiceConnectionCreated_at | ServiceConnectionUpdated_at | ServiceConnectionTitle | ServiceConnectionDescription | ServiceConnectionImage | createServicePayload | updateServicePayload | deleteServicePayload | SocialMediaAccounts | SocialMediaAccountsConnection | SocialMediaAccountsAggregator | SocialMediaAccountsGroupBy | SocialMediaAccountsConnectionId | SocialMediaAccountsConnectionCreated_at | SocialMediaAccountsConnectionUpdated_at | SocialMediaAccountsConnectionService | SocialMediaAccountsConnectionUsername | SocialMediaAccountsConnectionPassword | SocialMediaAccountsConnectionUrl | SocialMediaAccountsConnectionActive | createSocialMediaAccountPayload | updateSocialMediaAccountPayload | deleteSocialMediaAccountPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   updateAboutUs(input: updateAboutUsInput): updateAboutUsPayload
@@ -354,8 +366,9 @@ type Mutation {
   deleteAward(input: deleteAwardInput): deleteAwardPayload
   updateContactInformation(input: updateContactInformationInput): updateContactInformationPayload
   deleteContactInformation: deleteContactInformationPayload
-  updateNavigationMenu(input: updateNavigationMenuInput): updateNavigationMenuPayload
-  deleteNavigationMenu: deleteNavigationMenuPayload
+  createNavigationMenuItem(input: createNavigationMenuItemInput): createNavigationMenuItemPayload
+  updateNavigationMenuItem(input: updateNavigationMenuItemInput): updateNavigationMenuItemPayload
+  deleteNavigationMenuItem(input: deleteNavigationMenuItemInput): deleteNavigationMenuItemPayload
   createProject(input: createProjectInput): createProjectPayload
   updateProject(input: updateProjectInput): updateProjectPayload
   deleteProject(input: deleteProjectInput): deleteProjectPayload
@@ -392,23 +405,61 @@ type Mutation {
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }
 
-type NavigationMenu {
+type NavigationMenuItem {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  about: String
-  projects: String
-  services: String
-  awards_and_press: String
-  contact_us: String
+  display_name: String
+  path: String
 }
 
-input NavigationMenuInput {
-  about: String
-  projects: String
-  services: String
-  awards_and_press: String
-  contact_us: String
+type NavigationMenuItemAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type NavigationMenuItemConnection {
+  values: [NavigationMenuItem]
+  groupBy: NavigationMenuItemGroupBy
+  aggregate: NavigationMenuItemAggregator
+}
+
+type NavigationMenuItemConnectionCreated_at {
+  key: DateTime
+  connection: NavigationMenuItemConnection
+}
+
+type NavigationMenuItemConnectionDisplay_name {
+  key: String
+  connection: NavigationMenuItemConnection
+}
+
+type NavigationMenuItemConnectionId {
+  key: ID
+  connection: NavigationMenuItemConnection
+}
+
+type NavigationMenuItemConnectionPath {
+  key: String
+  connection: NavigationMenuItemConnection
+}
+
+type NavigationMenuItemConnectionUpdated_at {
+  key: DateTime
+  connection: NavigationMenuItemConnection
+}
+
+type NavigationMenuItemGroupBy {
+  id: [NavigationMenuItemConnectionId]
+  created_at: [NavigationMenuItemConnectionCreated_at]
+  updated_at: [NavigationMenuItemConnectionUpdated_at]
+  display_name: [NavigationMenuItemConnectionDisplay_name]
+  path: [NavigationMenuItemConnectionPath]
+}
+
+input NavigationMenuItemInput {
+  display_name: String
+  path: String
 }
 
 type Project {
@@ -552,7 +603,9 @@ type Query {
   awards(sort: String, limit: Int, start: Int, where: JSON): [Award]
   awardsConnection(sort: String, limit: Int, start: Int, where: JSON): AwardConnection
   contactInformation: ContactInformation
-  navigationMenu: NavigationMenu
+  navigationMenuItem(id: ID!): NavigationMenuItem
+  navigationMenuItems(sort: String, limit: Int, start: Int, where: JSON): [NavigationMenuItem]
+  navigationMenuItemsConnection(sort: String, limit: Int, start: Int, where: JSON): NavigationMenuItemConnection
   project(id: ID!): Project
   projects(sort: String, limit: Int, start: Int, where: JSON): [Project]
   projectsConnection(sort: String, limit: Int, start: Int, where: JSON): ProjectConnection
@@ -759,12 +812,13 @@ type updateContactInformationPayload {
   contactInformation: ContactInformation
 }
 
-input updateNavigationMenuInput {
-  data: editNavigationMenuInput
+input updateNavigationMenuItemInput {
+  where: InputID
+  data: editNavigationMenuItemInput
 }
 
-type updateNavigationMenuPayload {
-  navigationMenu: NavigationMenu
+type updateNavigationMenuItemPayload {
+  navigationMenuItem: NavigationMenuItem
 }
 
 input updateProjectInput {

@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navigation_menu_items",
+  "info": {
+    "name": "navigation_menu_item"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "display_name": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    }
+  }
+}
