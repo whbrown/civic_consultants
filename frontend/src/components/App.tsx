@@ -25,7 +25,10 @@ class App extends Component<AppProps, AppState> {
     super(props);
     this.state = {
       menuItems: null,
-      aboutUs: null,
+      aboutUs: {
+        company_name: "Civic Consultants Inc.",
+        tagline: "IDEA: Interior Design, Engineering and Architecture",
+      },
       isMobileNavActive: false,
       projects: null,
     }

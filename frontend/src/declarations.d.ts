@@ -32,10 +32,10 @@ interface CivicImage extends CivicBasicImage {
 interface CivicAboutUs { 
   company_name: string;
   tagline: string;
-  detailed_description: string;
-  created_at: string;
-  updated_at: string;
-  logo: CivicImage;
+  detailed_description?: string;
+  created_at?: string;
+  updated_at?: string;
+  logo?: CivicImage;
  };
 
  interface CivicNavMenuItem {
