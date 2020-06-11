@@ -21,9 +21,13 @@ class Project extends Component<ProjectProps> {
   render() {
     return (
       <a href="/">
-        <h4 className="card__header">{this.props.project.title}</h4>
-        <img src={`${process.env.API_URL}${this.props.project.primary_image.formats.small.url}`} 
-          alt={this.props.project.primary_image.alternativeText} />
+      {this.props.project && 
+        <>
+          <h4 className="card__header">{this.props.project.title}</h4>
+          <img src={`${process.env.API_URL}${this.props.project?.primary_image?.formats?.small?.url || this.props.project?.primary_image?.url}`} 
+          alt={this.props.project?.primary_image?.alternativeText} />
+        </>
+      }
       </a>
     )
   }
