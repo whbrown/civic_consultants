@@ -139,10 +139,17 @@
    margin: 1.5em
   }
  }
+ @media (min-width:38em) {
+  .section__list>li {
+    -ms-flex:0 0 36.3333%;
+    flex:0 0 36.3333%;
+    margin: 1.5em
+   } 
+ }
  @media (min-width:45em) {
   .section__list>li {
-   -ms-flex:0 0 31.3333%;
-   flex:0 0 31.3333%;
+   -ms-flex:0 0 28.3333%;
+   flex:0 0 28.3333%;
    margin: 1.5em
   }
  }
