@@ -36,8 +36,8 @@ class Projects extends Component<ProjectsProps> {
         <div className="container container--lrg">
           <ul className="section__list">
             {this.props.projects && this.props.projects.map((project) => 
-              (<li key={project.id} className="card card--box-shadow">
-                <ProjectCard project={project} />
+              (<li key={project.id} className={`card card--box-shadow ${project.id === 1 && 'flex-basis--45'}`}>
+                <a><ProjectCard project={project} /></a>
               </li>))}
           </ul>
         </div>
