@@ -1095,9 +1095,12 @@ a:hover .icon {
   display: none;
 }
 .footer__info {
+  margin-top: 2em;
   text-align: center;
-  color: #6f1d19;
-  font-size: 0.5625rem;
+  color:#77a4b672;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
 }
 ol,
 ul {

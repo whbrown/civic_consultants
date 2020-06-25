@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { PageProps } from 'gatsby';
 import axios from 'axios';
-
 import LandingPage from '@/components/LandingPage';
 import Header from '@/components/Header';
-
+import ProjectPage from '@/components/ProjectPage';
 
 /* declarations */
 
@@ -21,7 +20,9 @@ interface AppState {
 /* component */
 
 class App extends Component<AppProps, AppState> {
-  projectSectionRef: React.RefObject<HTMLElement>
+  introSectionRef: React.RefObject<HTMLElement>;
+  projectSectionRef: React.RefObject<HTMLElement>;
+  contactSectionRef: React.RefObject<HTMLElement>; 
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +34,9 @@ class App extends Component<AppProps, AppState> {
       isMobileNavActive: false,
       projects: null,
     }
+    this.introSectionRef = React.createRef<HTMLElement>();
     this.projectSectionRef = React.createRef<HTMLElement>();
+    this.contactSectionRef = React.createRef<HTMLElement>(); 
   }
 
   toggleMobileNav = () => {
@@ -72,8 +75,8 @@ class App extends Component<AppProps, AppState> {
     const { menuItems, aboutUs, projects } = this.state;
     return (
       <div className="home js">
-        <Header menuItems={menuItems} getMenuItems={this.getMenuItems} isMobileNavActive={this.state.isMobileNavActive} toggleMobileNav={this.toggleMobileNav} projectSectionRef={this.projectSectionRef}/>
-        <LandingPage aboutUs={aboutUs} projects={projects} getProjects={this.getProjects} projectSectionRef={this.projectSectionRef} />
+        <Header menuItems={menuItems} getMenuItems={this.getMenuItems} isMobileNavActive={this.state.isMobileNavActive} toggleMobileNav={this.toggleMobileNav} introSectionRef={this.introSectionRef} projectSectionRef={this.projectSectionRef} contactSectionRef={this.contactSectionRef} />
+        <LandingPage aboutUs={aboutUs} projects={projects} getProjects={this.getProjects} introSectionRef={this.introSectionRef} projectSectionRef={this.projectSectionRef} contactSectionRef={this.contactSectionRef} />
       </div>
     )
   }

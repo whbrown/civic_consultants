@@ -3,7 +3,7 @@ import { PageProps } from 'gatsby';
 
 import '@/styles/section.css';
 
-import Project from './Project';
+import ProjectCard from '@/components/ProjectCard';
 
 /* declarations */
 
@@ -37,7 +37,7 @@ class Projects extends Component<ProjectsProps> {
           <ul className="section__list">
             {this.props.projects && this.props.projects.map((project) => 
               (<li key={project.id} className="card card--box-shadow">
-                <Project project={project} />
+                <ProjectCard project={project} />
               </li>))}
           </ul>
         </div>

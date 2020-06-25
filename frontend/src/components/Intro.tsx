@@ -5,12 +5,13 @@ import '../styles/intro.css';
 import logo from '../images/logo.svg';
 
 interface IntroProps {
+  introSectionRef: React.RefObject<HTMLElement>;
   aboutUs: null | CivicAboutUs;
 }
 
 const Intro: React.FC<IntroProps> = (props) => {
   return (
-    <section className="intro">
+    <section className="intro" ref={props.introSectionRef}>
       <div className="intro__content js-parallax" data-rellax-speed="2" style={{transform: 'translate3d(0px, 0px, 0px)'}}>
       <header className="slat">
         <div className="slat__media texture">

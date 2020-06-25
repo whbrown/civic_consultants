@@ -1,0 +1,29 @@
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  margin-left: -16px;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid #d2d1e9;
+}
+
+.footer a {
+  font-weight: 700;
+  font-size: 0.9rem;
+  background-color: #77a4b6;
+}
+.media__body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer__callout-title {
+  font-weight: 300;
+  margin: 1em;
+}
+.footer__callout-title span {
+  font-weight: 900;
+}
