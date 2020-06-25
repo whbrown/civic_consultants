@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { PageProps } from 'gatsby';
 import axios from 'axios';
 
+import LandingPage from '@/components/LandingPage';
 import Header from '@/components/Header';
-import Intro from '@/components/Intro';
-import Projects from '@/components/Projects';
+
 
 /* declarations */
 
@@ -21,6 +21,7 @@ interface AppState {
 /* component */
 
 class App extends Component<AppProps, AppState> {
+  projectSectionRef: React.RefObject<HTMLElement>
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +33,7 @@ class App extends Component<AppProps, AppState> {
       isMobileNavActive: false,
       projects: null,
     }
+    this.projectSectionRef = React.createRef<HTMLElement>();
   }
 
   toggleMobileNav = () => {
@@ -70,11 +72,8 @@ class App extends Component<AppProps, AppState> {
     const { menuItems, aboutUs, projects } = this.state;
     return (
       <div className="home js">
-        <Header menuItems={menuItems} getMenuItems={this.getMenuItems} isMobileNavActive={this.state.isMobileNavActive} toggleMobileNav={this.toggleMobileNav} />
-        <main className="main__inner">
-          <Intro aboutUs={aboutUs} />
-          <Projects projects={projects} getProjects={this.getProjects} />
-        </main>
+        <Header menuItems={menuItems} getMenuItems={this.getMenuItems} isMobileNavActive={this.state.isMobileNavActive} toggleMobileNav={this.toggleMobileNav} projectSectionRef={this.projectSectionRef}/>
+        <LandingPage aboutUs={aboutUs} projects={projects} getProjects={this.getProjects} projectSectionRef={this.projectSectionRef} />
       </div>
     )
   }

@@ -10,6 +10,7 @@ import Project from './Project';
 interface ProjectsProps {
   projects: CivicProject[];
   getProjects: () => Promise<void>;
+  projectSectionRef: React.RefObject<HTMLElement>;
 };
 
 /* === */
@@ -26,7 +27,7 @@ class Projects extends Component<ProjectsProps> {
 
   render() {
     return (
-      <section className="section">
+      <section ref={this.props.projectSectionRef} className="section section--projects">
         <header className="section__header">
           <h2 className="section__title">
             Recent Projects

@@ -117,6 +117,7 @@
   display:flex;
   -ms-flex-pack:distribute;
   justify-content:space-around;
+  align-items: flex-start;
   -ms-flex-flow:row wrap;
   flex-flow:row wrap;
   margin:0 0 3em

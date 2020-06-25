@@ -11,6 +11,7 @@ interface HeaderProps {
   menuItems: null | { id: number, displayName: string, path: string }[];
   isMobileNavActive: boolean;
   toggleMobileNav: () => void;
+  projectSectionRef: React.RefObject<HTMLElement>
 };
 
 interface HeaderState {
@@ -29,7 +30,7 @@ class Header extends Component<HeaderProps, HeaderState> {
   render() {
     const { menuItems, getMenuItems, isMobileNavActive, toggleMobileNav } = this.props;
     return (
-      <header className="header">
+      <header className="header is-active">
         <a className="header__logo" href="/">
           <img className="logo" width="40" height="40" src={logo} alt="Civic Logo"/>
         </a>
@@ -37,7 +38,7 @@ class Header extends Component<HeaderProps, HeaderState> {
           <span className="toggle__label">Menu</span>
           <span className="toggle__control"></span>
         </a>
-        <Navbar menuItems={menuItems} getMenuItems={getMenuItems} isMobileNavActive={isMobileNavActive} />
+        <Navbar menuItems={menuItems} getMenuItems={getMenuItems} isMobileNavActive={isMobileNavActive} projectSectionRef={this.props.projectSectionRef}/>
       </header>
     );
   }

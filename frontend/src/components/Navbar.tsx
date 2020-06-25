@@ -10,6 +10,7 @@ interface NavbarProps {
   getMenuItems: () => Promise<void>;
   menuItems: null | { id: number, displayName: string, path: string }[];
   isMobileNavActive: boolean;
+  projectSectionRef: React.RefObject<HTMLElement>;
 };
 
 interface NavbarState {
@@ -26,15 +27,26 @@ class Navbar extends Component<NavbarProps, NavbarState> {
   componentDidMount() {
     this.props.getMenuItems();
   }
+  handleScrollToSection(event, ref) {
+    event.preventDefault();
+    console.log(ref.current.offsetTop);
+    window.scrollTo(0, ref.current.offsetTop);
+  }
 
   render() {
     const { menuItems, isMobileNavActive } = this.props;
+    const menuItemsOnLandingPage = ['projects'];
     return (
       <nav className={`nav header__nav ${isMobileNavActive ? 'is-active' : ''}`}>
-        {menuItems && menuItems.map((menuItem) => <a key={menuItem.id} href={menuItem.path}>{menuItem.displayName}</a>)}
+        {menuItems && menuItems.map((menuItem) => {
+          if (menuItemsOnLandingPage.includes(menuItem.path)) {
+            return <a key={menuItem.id} href='/' onClick={(e) => this.handleScrollToSection(e, this.props.projectSectionRef)}>{menuItem.displayName}</a>
+          } else {
+            return <a key={menuItem.id} href={menuItem.path}>{menuItem.displayName}</a>
+          }
+        })}
       </nav>
-    )
-  }
+  )
 }
-
+}
 export default Navbar;
