@@ -1736,7 +1736,3 @@ dl dd {
 .search .header__search-toggle svg {
   fill: #f2e0c2;
 }
-
-.flex-basis--45 {
-  flex-basis: 45%;
-}

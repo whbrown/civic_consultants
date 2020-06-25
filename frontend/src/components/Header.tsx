@@ -11,6 +11,7 @@ interface HeaderProps {
   menuItems: null | { id: number, displayName: string, path: string }[];
   isMobileNavActive: boolean;
   toggleMobileNav: () => void;
+  disableMobileNav: () => void;
   introSectionRef: React.RefObject<HTMLElement>
   contactSectionRef: React.RefObject<HTMLElement>
   projectSectionRef: React.RefObject<HTMLElement>
@@ -37,7 +38,7 @@ class Header extends Component<HeaderProps, HeaderState> {
   }
   
   render() {
-    const { menuItems, getMenuItems, isMobileNavActive, toggleMobileNav } = this.props;
+    const { menuItems, getMenuItems, isMobileNavActive, toggleMobileNav, disableMobileNav } = this.props;
     return (
       <header className="header is-active">
         <a className="header__logo" href="/" onClick={(e) => this.handleScrollToSection(e, this.props.introSectionRef)}>
@@ -47,7 +48,7 @@ class Header extends Component<HeaderProps, HeaderState> {
           <span className="toggle__label">Menu</span>
           <span className="toggle__control"></span>
         </a>
-        <Navbar menuItems={menuItems} getMenuItems={getMenuItems} isMobileNavActive={isMobileNavActive} handleScrollToSection={this.handleScrollToSection} introSectionRef={this.props.introSectionRef} projectSectionRef={this.props.projectSectionRef} contactSectionRef={this.props.contactSectionRef}/>
+        <Navbar menuItems={menuItems} getMenuItems={getMenuItems} isMobileNavActive={isMobileNavActive} handleScrollToSection={this.handleScrollToSection} introSectionRef={this.props.introSectionRef} projectSectionRef={this.props.projectSectionRef} contactSectionRef={this.props.contactSectionRef} disableMobileNav={disableMobileNav} />
       </header>
     );
   }

@@ -20,6 +20,11 @@
   justify-content: center;
   align-items: center;
 }
+@media(max-width:32em) {
+  .media__body {
+    flex-direction: column;
+  }
+}
 .footer__callout-title {
   font-weight: 300;
   margin: 1em;

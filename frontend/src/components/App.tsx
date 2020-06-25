@@ -48,6 +48,11 @@ class App extends Component<AppProps, AppState> {
       })
     })
   }
+  disableMobileNav = () => {
+    this.setState(() => {
+      return ({isMobileNavActive: false});
+    });
+  }
   async componentDidMount() {
     // maybe refactor the aboutUs API endpoint request? ...although it's static info that only needs to be requested once on each site visit
     const aboutUsResponse = await axios.get<CivicAboutUs>(`${process.env.API_URL}/about-us`);
@@ -77,7 +82,7 @@ class App extends Component<AppProps, AppState> {
     const { menuItems, aboutUs, projects } = this.state;
     return (
       <div className="home js">
-        <Header menuItems={menuItems} getMenuItems={this.getMenuItems} isMobileNavActive={this.state.isMobileNavActive} toggleMobileNav={this.toggleMobileNav} introSectionRef={this.introSectionRef} projectSectionRef={this.projectSectionRef} contactSectionRef={this.contactSectionRef} />
+        <Header menuItems={menuItems} getMenuItems={this.getMenuItems} isMobileNavActive={this.state.isMobileNavActive} toggleMobileNav={this.toggleMobileNav} disableMobileNav={this.disableMobileNav} introSectionRef={this.introSectionRef} projectSectionRef={this.projectSectionRef} contactSectionRef={this.contactSectionRef} />
         <LandingPage aboutUs={aboutUs} projects={projects} getProjects={this.getProjects} introSectionRef={this.introSectionRef} projectSectionRef={this.projectSectionRef} contactSectionRef={this.contactSectionRef} />
       </div>
     )

@@ -10,6 +10,7 @@ interface NavbarProps {
   getMenuItems: () => Promise<void>;
   menuItems: null | { id: number, displayName: string, path: string }[];
   isMobileNavActive: boolean;
+  disableMobileNav: () => void;
   handleScrollToSection: (event: any, ref: any) => void;
   introSectionRef: React.RefObject<HTMLElement>;
   contactSectionRef: React.RefObject<HTMLElement>;
@@ -39,7 +40,11 @@ class Navbar extends Component<NavbarProps, NavbarState> {
       <nav className={`nav header__nav ${isMobileNavActive ? 'is-active' : ''}`}>
         {menuItems && menuItems.map((menuItem) => {
           if (Object.keys(menuItemsOnLandingPage).includes(menuItem.path)) {
-            return <a key={menuItem.id} href='/' onClick={(e) => handleScrollToSection(e, menuItemsOnLandingPage[menuItem.path])}>{menuItem.displayName}</a>
+            return <a key={menuItem.id} href='/' onClick={(e) => {
+              e.preventDefault();
+              this.props.disableMobileNav();
+              handleScrollToSection(e, menuItemsOnLandingPage[menuItem.path])
+            }}>{menuItem.displayName}</a>
           } else {
             return <a key={menuItem.id}>{menuItem.displayName}</a>
           }

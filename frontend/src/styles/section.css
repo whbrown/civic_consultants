@@ -134,8 +134,8 @@
  }
  @media (min-width:25em) {
   .section__list>li {
-   -ms-flex:0 0 42.3333%;
-   flex:0 0 42.3333%;
+   -ms-flex:0 0 85.3333%;
+   flex:0 0 85.3333%;
    margin: 1.5em
   }
  }
@@ -149,7 +149,7 @@
  @media (min-width:45em) {
   .section__list>li {
    -ms-flex:0 0 40.3333%;
-   flex:0 0 28.3333%;
+   flex:0 0 40.3333%;
    margin: 1.5em
   }
  }
