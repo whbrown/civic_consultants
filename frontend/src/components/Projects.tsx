@@ -3,13 +3,14 @@ import { PageProps } from 'gatsby';
 
 import '@/styles/section.css';
 
-import Project from './Project';
+import ProjectCard from '@/components/ProjectCard';
 
 /* declarations */
 
 interface ProjectsProps {
   projects: CivicProject[];
   getProjects: () => Promise<void>;
+  projectSectionRef: React.RefObject<HTMLElement>;
 };
 
 /* === */
@@ -26,7 +27,7 @@ class Projects extends Component<ProjectsProps> {
 
   render() {
     return (
-      <section className="section">
+      <section ref={this.props.projectSectionRef} className="section section--projects">
         <header className="section__header">
           <h2 className="section__title">
             Recent Projects
@@ -36,7 +37,7 @@ class Projects extends Component<ProjectsProps> {
           <ul className="section__list">
             {this.props.projects && this.props.projects.map((project) => 
               (<li key={project.id} className="card card--box-shadow">
-                <Project project={project} />
+                <ProjectCard project={project} />
               </li>))}
           </ul>
         </div>

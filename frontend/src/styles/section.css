@@ -117,6 +117,7 @@
   display:flex;
   -ms-flex-pack:distribute;
   justify-content:space-around;
+  align-items: flex-start;
   -ms-flex-flow:row wrap;
   flex-flow:row wrap;
   margin:0 0 3em
@@ -133,15 +134,16 @@
  }
  @media (min-width:25em) {
   .section__list>li {
-   -ms-flex:0 0 48%;
-   flex:0 0 48%
+   -ms-flex:0 0 42.3333%;
+   flex:0 0 42.3333%;
+   margin: 1.5em
   }
  }
  @media (min-width:45em) {
   .section__list>li {
    -ms-flex:0 0 31.3333%;
    flex:0 0 31.3333%;
-   margin:0 0 1.5em
+   margin: 1.5em
   }
  }
  .section__footer {
