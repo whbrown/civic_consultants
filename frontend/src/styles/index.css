@@ -1737,3 +1737,6 @@ dl dd {
   fill: #f2e0c2;
 }
 
+.flex-basis--45 {
+  flex-basis: 45%;
+}

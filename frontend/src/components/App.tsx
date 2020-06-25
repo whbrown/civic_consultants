@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { PageProps } from 'gatsby';
 import axios from 'axios';
+
 import LandingPage from '@/components/LandingPage';
 import Header from '@/components/Header';
 import ProjectPage from '@/components/ProjectPage';
+
 
 /* declarations */
 

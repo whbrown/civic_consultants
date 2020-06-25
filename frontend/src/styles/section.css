@@ -148,7 +148,7 @@
  }
  @media (min-width:45em) {
   .section__list>li {
-   -ms-flex:0 0 28.3333%;
+   -ms-flex:0 0 40.3333%;
    flex:0 0 28.3333%;
    margin: 1.5em
   }
